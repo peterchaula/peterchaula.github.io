@@ -222,7 +222,7 @@
     context.fillRect(0, 0, canvas.width, canvas.height);
     const quality = qualityInput.value;
 
-    const data = canvas.toDataURL("image/png", quality);
+    const data = canvas.toDataURL("image/jpeg", quality);
     photo.setAttribute("src", data);
   }
 
@@ -240,7 +240,7 @@
       context.drawImage(video, 0, 0, width, height);
       const quality = qualityInput.value;
 
-      const data = canvas.toDataURL("image/png". quality);
+      const data = canvas.toDataURL("image/jpeg". quality);
       photo.setAttribute("src", data);
     } else {
       clearphoto();
