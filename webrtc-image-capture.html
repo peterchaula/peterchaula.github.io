@@ -102,6 +102,7 @@
   <div class="camera">
     <video id="video">Video stream not available.</video>
     <button id="startbutton">Take photo</button>
+    <input type="number" id="quality" step="0.1"/>
   </div>
   <canvas id="canvas"> </canvas>
   <div class="output">
@@ -140,6 +141,7 @@
   let canvas = null;
   let photo = null;
   let startbutton = null;
+  let qualityBtn = null;
 
   function showViewLiveResultButton() {
     if (window.self !== window.top) {
@@ -164,6 +166,7 @@
     canvas = document.getElementById("canvas");
     photo = document.getElementById("photo");
     startbutton = document.getElementById("startbutton");
+    qualityBtn = document.getElementById("quality");
 
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: false })
@@ -217,8 +220,9 @@
     const context = canvas.getContext("2d");
     context.fillStyle = "#AAA";
     context.fillRect(0, 0, canvas.width, canvas.height);
+    const quality = qualityInput.value;
 
-    const data = canvas.toDataURL("image/png");
+    const data = canvas.toDataURL("image/png", quality);
     photo.setAttribute("src", data);
   }
 
